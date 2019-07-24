@@ -1,0 +1,19 @@
+{
+  "name": "vs-node-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vansh37/vs-node-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vansh37/vs-node-blog/issues"
+  },
+  "homepage": "https://github.com/vansh37/vs-node-blog#readme"
+}
