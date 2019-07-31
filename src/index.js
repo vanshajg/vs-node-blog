@@ -1,6 +1,8 @@
-// routing page
-console.log('hello world " testing " test 1234 tested vansh');
+import express from 'express';
 
-require('dotenv').config(); // once used with .env module , process.env object will contain all data of .env config file.
+const app = express();
+const port = process.env.PORT;
 
-console.log(process.env.DB_HOST);
+app.get('/', (req, res) => res.send('Hello World! its vanshaj'));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
