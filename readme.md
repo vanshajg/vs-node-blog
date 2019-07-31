@@ -34,3 +34,12 @@ npm install -g npx
 vim webpack.config.js
 
 npx webpack --config webpack.config.js
+
+---
+
+[pm2 documentation](https://pm2.keymetrics.io/)
+install pm2 globally
+npm install pm2@latest -g
+
+generate ecosystem file
+pm2 ecosystem
