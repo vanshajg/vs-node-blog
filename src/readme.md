@@ -34,3 +34,13 @@ npm install -g npx
 vim webpack.config.js
 
 npx webpack --config webpack.config.js
+
+---
+
+2019-08-04
+Added Express Framework
+
+Added Mongoose ORM
+
+Installation steps for MongoDB :
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
