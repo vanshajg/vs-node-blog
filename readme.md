@@ -1,3 +1,10 @@
+# Setup
+- npm install
+- run this commmand in seperate terminal : npm run build:dev
+- run this when compiled : npm run start:dev
+
+
+
 -- 2019-07-24
 OM
 
