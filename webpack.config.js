@@ -1,15 +1,45 @@
-const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
-module.exports = {
+const baseConfig = {
+  mode: 'development',
+  watch: true
+};
+const clientConfig = {
+  entry: './src/client.js',
+  output: {
+    filename: 'clientbundle.js',
+    path: `${__dirname}/assets`
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  target: 'web'
+};
+const serverConfig = {
   entry: './src/index.js',
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'serverbundle.js',
+    path: `${__dirname}/build`
   },
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
   },
-  mode: 'development',
-  target: 'node'
+  target: 'node',
+  node: {
+    __dirname: false // https://webpack.js.org/configuration/node/#node__dirname
+  },
+  externals: [nodeExternals()] // https://www.npmjs.com/package/webpack-node-externals
 };
+module.exports = [{ ...baseConfig, ...clientConfig }, { ...baseConfig, ...serverConfig }];
