@@ -50,3 +50,9 @@ npm install pm2@latest -g
 
 generate ecosystem file
 pm2 ecosystem
+
+
+---
+
+setup webpack for client and server bundles [webpack config](https://webpack.js.org/concepts/)
+
