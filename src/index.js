@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import bodyParser from 'body-parser';
+import userController from '../controller/user';
 
 const app = express();
-const port = process.env.PORT;
-const userController = require('./../controller/user');
+const port = process.env.PORT || 3000;
 
-const bodyParser = require('body-parser');
 
 // app.get('/', (req, res) => res.send('Hello World! its vanshaj'));
 
@@ -15,5 +16,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/user', userController);
+
+// app.get('/', (req, res) => res.send('Hello World! its vanshaj'));
+app.get('/client.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../assets/clientbundle.js'));
+});
+app.get('/home', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../public/index.html'));
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
