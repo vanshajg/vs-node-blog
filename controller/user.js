@@ -1,4 +1,5 @@
 import express from 'express';
+import jwt from 'jsonwebtoken';
 import User from '../db/model/user';
 
 const { ObjectId } = require('mongodb').ObjectID;
@@ -18,6 +19,8 @@ router.post('/create', (req, resp) => {
     .save()
     .then((res) => {
       console.log('saved user ', res);
+      const token = jwt.sign({ email: 'vanshaj@gmail.com', name: 'vanshaj' }, 'SALT-VSCODE');
+      resp.header({ 'x-auth': token });
       resp.status(200).send('User Created Successfully');
     })
     .catch((e) => {
