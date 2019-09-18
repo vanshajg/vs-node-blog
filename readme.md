@@ -1,9 +1,8 @@
 # Setup
+
 - npm install
 - run this commmand in seperate terminal : npm run build:dev
 - run this when compiled : npm run start:dev
-
-
 
 -- 2019-07-24
 OM
@@ -51,8 +50,15 @@ npm install pm2@latest -g
 generate ecosystem file
 pm2 ecosystem
 
-
 ---
 
 setup webpack for client and server bundles [webpack config](https://webpack.js.org/concepts/)
 
+---
+
+implemented JWT with env variables.
+Env file can be accessed by following steps.
+import dotenv from 'dotenv'
+dotenv.config({ silent: true });
+
+- using env key defined in .env config file as : process.env.ENV_KEY

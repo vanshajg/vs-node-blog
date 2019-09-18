@@ -1,6 +1,9 @@
 import express from 'express';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import User from '../db/model/user';
 
+dotenv.config({ silent: false });
 const { ObjectId } = require('mongodb').ObjectID;
 
 const router = express.Router();
@@ -14,10 +17,14 @@ router.post('/create', (req, resp) => {
     name
   });
 
+  const token = jwt.sign({ email, name }, process.env.JWT_SALT);
+  usr.tokens = usr.tokens.concat([{ token }]);
   usr
     .save()
     .then((res) => {
       console.log('saved user ', res);
+
+      resp.header({ 'X-auth': token });
       resp.status(200).send('User Created Successfully');
     })
     .catch((e) => {
